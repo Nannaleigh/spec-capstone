@@ -7,26 +7,26 @@ process.on("uncaughtException", (err) => {
   console.log("Shutting down server due to uncaught exceptions");
   process.exit(1);
 });
-
-const products = require("../routes/product");
 const connectDatabase = require("../../database");
-const auth = require("../routes/auth");
-
 const cookieParser = require("cookie-parser");
-
 const errorMiddleware = require("../middlewares/errors");
 
-dotenv.config();
-
-connectDatabase();
-
 app.use(express.json());
-
-app.use(errorMiddleware);
 app.use(cookieParser());
 
+dotenv.config();
+connectDatabase();
+
+const products = require("../routes/product");
+const auth = require("../routes/auth");
+const order = require("../routes/order");
+
+
 app.use("/api/v1", products);
-app.use("/api/v1/", auth);
+app.use("/api/v1", auth);
+app.use("/api/v1", order);
+
+app.use(errorMiddleware);
 
 module.exports = app;
 
