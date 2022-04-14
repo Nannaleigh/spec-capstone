@@ -1,13 +1,18 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv')
+const mongoose = require("mongoose");
+// eslint-disable-next-line no-unused-vars
+const dotenv = require("dotenv");
 
 const connectDatabase = () => {
-    mongoose.connect(process.env.DB_LOCAL_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-     }).then(con => {
-         console.log(`MongoDB Database connected with HOST: ${con.connection.host}`)
-     })
-}
+  mongoose
+    .connect(process.env.DB_LOCAL_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((con) => {
+      console.log(
+        `MongoDB Database connected with HOST: ${con.connection.host}`
+      );
+    });
+};
 
-module.exports = connectDatabase
+module.exports = connectDatabase;

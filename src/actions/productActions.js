@@ -4,8 +4,7 @@ import {
   ALL_PRODUCTS_REQUEST,
   ALL_PRODUCTS_SUCCESS,
   ALL_PRODUCTS_FAIL,
-  CLEAR_ERRORS,
-} from "../reducers/productReducers";
+} from "../reducers/productsReducers";
 
 export const getProducts = () => async (dispatch) => {
   try {
@@ -23,8 +22,4 @@ export const getProducts = () => async (dispatch) => {
   }
 };
 
-export const clearErrors = () => async (dispatch) => {
-  dispatch({
-    type: CLEAR_ERRORS,
-  });
-};
+
