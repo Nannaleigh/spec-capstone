@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <footer className="py-1">
         <p className="text-center mt-1">
-          eBazaar &copy; - Capstone 2021, All Rights Reserved
+          eBazaar &copy; - Capstone 2022, All Rights Reserved
         </p>
       </footer>
     </>

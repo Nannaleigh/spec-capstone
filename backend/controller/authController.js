@@ -1,11 +1,15 @@
 const User = require("../models/user");
-
 const ErrorHandler = require("../utils/errorHandler");
-
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
+const cloudinary = require("cloudinary");
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
   const { name, email, password } = req.body;
 
   const user = await User.create({
@@ -13,9 +17,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id:
-        "11348401/pexels-photo-11348401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      url: "https://images.pexels.com/photos/11348401/pexels-photo-11348401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      public_id: result.public_id,
+      url: result.secure_url,
     },
   });
 
