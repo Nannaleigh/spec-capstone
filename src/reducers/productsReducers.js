@@ -46,6 +46,6 @@ export const productDetailsReducer = (state = {product : {} }, action) => {
                 error: action.payload
             }
         default: 
-
+          return state
     }
-}
+} 

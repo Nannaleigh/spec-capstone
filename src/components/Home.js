@@ -5,12 +5,11 @@ import MetaData from "./layout/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
 import Product from "./product/Product";
+
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { loading, products, error, productsCount } = useSelector(
-    (state) => state.products
-  );
+  const { loading, products } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProducts());
