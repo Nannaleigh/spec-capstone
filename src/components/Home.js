@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
-import MetaData from "./layout/MetaData";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../actions/productActions";
@@ -21,7 +20,6 @@ const Home = () => {
         <h1> Loading... </h1>
       ) : (
         <>
-          <MetaData title={"Shopping made simple"} />
           <h1 id="products_heading">Latest Products</h1>
 
           <section id="products" className="container mt-5">

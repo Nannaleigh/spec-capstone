@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Carousel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../actions/productActions";
 import { useParams } from "react-router-dom";
+import { addItemToCart } from "../../actions/cartActions";
 
 const ProductDetails = () => {
+  const [quantity, setQuantity] = useState(1);
+
   const dispatch = useDispatch();
   const params = useParams();
   const { loading, product } = useSelector((state) => state.productDetails);
@@ -13,6 +16,25 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductDetails(params.id));
   }, [dispatch, params.id]);
+
+  const addToCart = () => {
+    dispatch(addItemToCart(match.params.id, quantity));
+    alert.success("Item Added to Cart");
+  };
+
+  const increaseQty = () => {
+    const count = document.querySelector(".count");
+    if (count.valueAsNumber >= product.stock) return;
+    const qty = count.valueAsNumber + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQty = () => {
+    const count = document.querySelector(".count");
+    if (count.valueAsNumber <= 1) return;
+    const qty = count.valueAsNumber - 1;
+    setQuantity(qty);
+  };
 
   return (
     <>
@@ -53,7 +75,7 @@ const ProductDetails = () => {
               <hr />
 
               <p id="product_price">${product.price}</p>
-              {/* <div className="stockCounter d-inline">
+              <div className="stockCounter d-inline">
                 <span className="btn btn-danger minus" onClick={decreaseQty}>
                   -
                 </span>
@@ -181,14 +203,14 @@ const ProductDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div> */}
-              {/* </div> */}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* {product.reviews && product.reviews.length > 0 && (
+          {product.reviews && product.reviews.length > 0 && (
             <ListReviews reviews={product.reviews} />
-          )} */}
+          )}
         </>
       )}
     </>

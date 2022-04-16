@@ -4,39 +4,56 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { user, loading } = useSelector((state) => state.auth);
-  return <>
-      {loading ? <h1>Loading...</h1> : (
-          <>
-        <h2 classNameNameNameName="mt-5 ml-5">My Profile</h2>
-        <div classNameNameNameName="row justify-content-around mt-5 user-info">
-            <div classNameNameNameName="col-12 col-md-3">
-                <figure classNameNameNameName='avatar avatar-profile'>
-                    <img classNameNameNameName="rounded-circle img-fluid" src='' alt='' />
-                </figure>
-                <a href="#" id="edit_profile" classNameNameNameName="btn btn-primary btn-block my-5">
-                    Edit Profile
-                </a>
+  return (
+    <>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <div className="row justify-content-around mt-5 user-info">
+            <h2 className="mt-5 ml-5">My Profile</h2>
+            <div className="col-12 col-md-3">
+              <figure className="avatar avatar-profile">
+                <img
+                  className="rounded-circle img-fluid"
+                  src={user.avatar.url}
+                  alt={user.name}
+                />
+              </figure>
+              <Link
+                to="/me/update"
+                id="edit_profile"
+                className="btn btn-primary btn-block my-5"
+              >
+                Edit Profile
+              </Link>
             </div>
-     
-            <div classNameNameNameName="col-12 col-md-5">
-                 <h4>Full Name</h4>
-                 <p>Ghulam Abbas</p>
-     
-                 <h4>Email Address</h4>
-                 <p>ghulamabbas258@gmail.com</p>
 
-                 <a href="#" classNameNameNameName="btn btn-danger btn-block mt-5">
-                    My Orders
-                </a>
+            <div className="col-12 col-md-5">
+              <h4>Full Name</h4>
+              <p>{user.name}</p>
 
-                <a href="#" classNameNameNameName="btn btn-primary btn-block mt-3">
-                    Change Password
-                </a>
+              <h4>Email Address</h4>
+              <p>{user.email}</p>
+
+              {user.role !== "admin" && (
+                <Link to="#" className="btn btn-danger btn-block mt-5">
+                  My Orders
+                </Link>
+              )}
+
+              <Link
+                to="password/update"
+                className="btn btn-primary btn-block mt-3"
+              >
+                Change Password
+              </Link>
             </div>
-        </div>  
-        </> 
+          </div>
+        </>
       )}
-  </>;
+    </>
+  );
 };
 
 export default Profile;
