@@ -6,6 +6,8 @@ import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
 import ProductDetails from "./components/product/ProductDetails";
 import Cart from "./components/cart/Cart";
+import ListOrders from "./components/orders/ListOrders";
+
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import { loadUser } from "./actions/userActions";
@@ -30,6 +32,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/me" element={<Profile />} exact />
+            <Route path="orders/me" element={<ListOrders />} exact />
           </Routes>
         </div>
         <Footer />
