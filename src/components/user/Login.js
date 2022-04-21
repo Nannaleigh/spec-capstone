@@ -7,12 +7,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate;
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
+    const navigate = useNavigate;
     if (isAuthenticated) {
       navigate.push("/");
     }

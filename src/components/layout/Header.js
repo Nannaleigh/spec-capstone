@@ -20,7 +20,9 @@ const Header = () => {
       <nav className="navbar row">
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
-            <img src="/images/logo-snip.png" alt="logo" id="logo" />
+            <Link to="/">
+              <img src="/images/logo-snip.png" alt="logo" id="logo" />
+            </Link>
           </div>
         </div>
 
@@ -56,7 +58,7 @@ const Header = () => {
                 type="button"
                 id="dropDownMenuButton"
                 data-toggle="dropdown"
-                aria-aria-haspopup="true"
+                aria-haspopup="true"
                 aria-expanded="false"
               >
                 <figure className="avatar avatar-nav">
@@ -77,14 +79,14 @@ const Header = () => {
                     Dashboard
                   </Link>
                 )}
-                  <Link className="dropdown-item" to="orders/me">
-                    Orders
-                  </Link>
+                <Link className="dropdown-item" to="orders/me">
+                  Orders
+                </Link>
                 <Link className="dropdown-item" to="/me">
                   Profile
                 </Link>
                 <Link
-                  classname="dropdown-item text-danger"
+                  className="dropdown-item text-danger"
                   to="/"
                   onClick={logoutHandler}
                 >

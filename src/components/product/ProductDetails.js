@@ -18,8 +18,8 @@ const ProductDetails = () => {
   }, [dispatch, params.id]);
 
   const addToCart = () => {
-    dispatch(addItemToCart(match.params.id, quantity));
-    alert.success("Item Added to Cart");
+    dispatch(addItemToCart(params.id, quantity));
+    alert("Item Added to Cart");
   };
 
   const increaseQty = () => {
@@ -122,7 +122,7 @@ const ProductDetails = () => {
                 Sold by: <strong>{product.seller}</strong>
               </p>
 
-              {user ? (
+              {/* {user ? (
                 <button
                   id="review_btn"
                   type="button"
@@ -137,7 +137,7 @@ const ProductDetails = () => {
                 <div className="alert alert-danger mt-5" type="alert">
                   Login to post your review.
                 </div>
-              )}
+              )} */}
 
               <div className="row mt-2 mb-5">
                 <div className="rating w-50">
@@ -186,14 +186,14 @@ const ProductDetails = () => {
                           <textarea
                             name="review"
                             id="review"
-                            className="form-control mt-3"
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
+                            // className="form-control mt-3"
+                            // value={comment}
+                            // onChange={(e) => setComment(e.target.value)}
                           ></textarea>
 
                           <button
                             className="btn my-3 float-right review-btn px-4 text-white"
-                            onClick={reviewHandler}
+                            // onClick={reviewHandler}
                             data-dismiss="modal"
                             aria-label="Close"
                           >
@@ -208,9 +208,9 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {product.reviews && product.reviews.length > 0 && (
+          {/* {product.reviews && product.reviews.length > 0 && (
             <ListReviews reviews={product.reviews} />
-          )}
+          )} */}
         </>
       )}
     </>

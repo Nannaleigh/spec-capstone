@@ -2,7 +2,7 @@ import axios from "axios";
 import { ADD_TO_CART, REMOVE_CART_ITEM } from "../reducers/cartReducers";
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`api/vw/product/${id}`);
+  const { data } = await axios.get(`api/v1/product/${id}`);
 
   dispatch({
     type: ADD_TO_CART,
@@ -20,9 +20,8 @@ export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
 };
 
 export const removeItemFromCart = (id) => async (dispatch, getState) => {
-
   dispatch({
-    type: REMOVE_ITEM_CART,
+    type: REMOVE_CART_ITEM,
     payload: id,
   });
 

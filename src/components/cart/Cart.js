@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 
-const Cart = () => {
+const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -35,7 +35,7 @@ const Cart = () => {
 
           <div className="row d-flex justify-content-between">
             <div className="col-12 col-lg-8">
-              {cartItems.map((item) => {
+              {cartItems.map((item) => (
                 <>
                   <hr />
                   <div className="cart-item" key={item.product}>
@@ -101,8 +101,9 @@ const Cart = () => {
                     </div>
                   </div>
                   <hr />
-                </>;
-              })}
+                </>
+              ))}
+              ,
             </div>
 
             <div className="col-12 col-lg-3 my-4">
